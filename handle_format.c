@@ -1,57 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   handle_format.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/11/06 15:40:06 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/07 16:38:06 by oznachki      ########   odam.nl         */
+/*   Created: 2025/11/06 18:32:43 by oznachki      #+#    #+#                 */
+/*   Updated: 2025/11/07 16:34:47 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include <stdio.h>
+#include "printf.h" 
 
-int ft_printf(const char *format, ...)
+int	handle_format(char c, va_list *args)
 {
-	va_list args;
-	int i;
-	int count;
+	int	count;
 
-	va_start(args, format);
-	i = 0;
 	count = 0;
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			count += handle_format(format[i], &args);
-		}
-		else
-			count += print_char(format[i]);
-		i++;
-	}
-	va_end(args);
+	if (c == 'c')
+		count += print_char(va_arg(*args, int));
+	else if (c == 's')
+		count += print_str(va_arg(*args, char *));
+	else if (c == 'i' || c == 'd')
+		count += print_integer(va_arg(*args, int));
+		 
 	return (count);
 }
 
-int main(void)
-{	
-	int x = 42;
-	int i = printf("TestOrig: %d-%i\n", 42, 24);
-	printf("orig: %d\n", i);
-	
-	// int w = ft_printf("TestMine: %p\n",);
-	// printf("mine: %d\n", w);
-	
-	return (0);
-}
 
 // You have to implement the following conversions:
-// • %c Prints a single character. done
-// • %s Prints a string (as defined by the common C convention).
+// • %c Prints a single character. done!
+// • %s Prints a string (as defined by the common C convention). done!
 // • %p The void * pointer argument has to be printed in hexadecimal format.
 // • %d Prints a decimal (base 10) number.
 // • %i Prints an integer in base 10.

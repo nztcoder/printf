@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   printf.h                                           :+:    :+:            */
+/*   print_char.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/11/06 16:08:04 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/07 16:36:21 by oznachki      ########   odam.nl         */
+/*   Created: 2025/11/06 18:33:43 by oznachki      #+#    #+#                 */
+/*   Updated: 2025/11/07 14:36:48 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-# include <stdarg.h> //	multiple args
-# include <unistd.h> //	write
-# include "libft/libft.h"
-
-int ft_printf(const char *format, ...);
-int	print_char(int c);
-int	handle_format(char c, va_list *args);
-int print_str(char *str);
-int print_integer(int c);
-
-
-#endif
+int	print_char(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
