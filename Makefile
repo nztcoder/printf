@@ -6,7 +6,7 @@
 #    By: oznachki <oznachki@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/11/06 16:08:00 by oznachki      #+#    #+#                  #
-#    Updated: 2025/11/07 10:40:32 by oznachki      ########   odam.nl          #
+#    Updated: 2025/11/08 19:16:07 by oznachki      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,13 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c
+SRC = 	ft_printf.c \
+		handle_format.c \
+		print_char.c \
+		print_str.c \
+		print_integer.c
+		
+		
 
 OBJ = $(SRC:.c=.o)
 

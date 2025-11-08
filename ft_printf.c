@@ -6,12 +6,11 @@
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/06 15:40:06 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/07 16:38:06 by oznachki      ########   odam.nl         */
+/*   Updated: 2025/11/08 19:12:56 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include <stdio.h>
 
 int ft_printf(const char *format, ...)
 {
@@ -37,14 +36,14 @@ int ft_printf(const char *format, ...)
 	return (count);
 }
 
+#include <stdio.h>
 int main(void)
 {	
-	int x = 42;
-	int i = printf("TestOrig: %d-%i\n", 42, 24);
+	int i = printf("TestOrig: %d-%i\n", 123456789, 24);
 	printf("orig: %d\n", i);
 	
-	// int w = ft_printf("TestMine: %p\n",);
-	// printf("mine: %d\n", w);
+	int w = ft_printf("TestMine: %d-%i\n", 123456789, 24);
+	printf("mine: %d\n", w);
 	
 	return (0);
 }
@@ -53,8 +52,8 @@ int main(void)
 // • %c Prints a single character. done
 // • %s Prints a string (as defined by the common C convention).
 // • %p The void * pointer argument has to be printed in hexadecimal format.
-// • %d Prints a decimal (base 10) number.
-// • %i Prints an integer in base 10.
+// • %d Prints a decimal (base 10) number. done
+// • %i Prints an integer in base 10. done
 // • %u Prints an unsigned decimal (base 10) number.
 // • %x Prints a number in hexadecimal (base 16) lowercase format.
 // • %X Prints a number in hexadecimal (base 16) uppercase format.

@@ -6,7 +6,7 @@
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/06 18:32:43 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/07 16:34:47 by oznachki      ########   odam.nl         */
+/*   Updated: 2025/11/08 17:49:20 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	handle_format(char c, va_list *args)
 		count += print_str(va_arg(*args, char *));
 	else if (c == 'i' || c == 'd')
 		count += print_integer(va_arg(*args, int));
+		
 		 
 	return (count);
 }
