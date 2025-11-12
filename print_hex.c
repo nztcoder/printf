@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_str.c                                        :+:    :+:            */
+/*   print_hex.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/11/07 11:31:49 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/11 13:49:52 by oznachki      ########   odam.nl         */
+/*   Created: 2025/11/10 15:10:59 by oznachki      #+#    #+#                 */
+/*   Updated: 2025/11/11 14:03:58 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_str(char *str)
+int	print_hex(unsigned int n, char c)
 {
-	int	len;
+	int		count;
+	int		i;
+	char	*base;
+	char	remain[32];
 
-	if (!str)
+	if (c == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	if (n == 0)
+		return (print_char('0'));
+	count = 0;
+	while (n > 0)
 	{
-		write (1, "(null)", 6);
-		return (6);
+		remain[count] = base[n % 16];
+		n /= 16;
+		count++;
 	}
-	len = ft_strlen(str);
-	write(1, str, len);
-	return (len);
+	i = count;
+	while (i > 0)
+	{
+		print_char(remain[i - 1]);
+		i--;
+	}
+	return (count);
 }

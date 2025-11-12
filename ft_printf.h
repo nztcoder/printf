@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_str.c                                        :+:    :+:            */
+/*   ft_printf.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/11/07 11:31:49 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/11 13:49:52 by oznachki      ########   odam.nl         */
+/*   Created: 2025/11/06 16:08:04 by oznachki      #+#    #+#                 */
+/*   Updated: 2025/11/11 13:41:49 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	print_str(char *str)
-{
-	int	len;
+# include <stdarg.h> //	multiple args
+# include <unistd.h> //	write
+# include "libft/libft.h"
 
-	if (!str)
-	{
-		write (1, "(null)", 6);
-		return (6);
-	}
-	len = ft_strlen(str);
-	write(1, str, len);
-	return (len);
-}
+int	ft_printf(const char *format, ...);
+int	handle_format(char c, va_list *args);
+int	print_char(int c);
+int	print_str(char *str);
+int	print_int(long long n);
+int	print_hex(unsigned int n, char c);
+int	print_ptr(void *ptr);
+
+#endif

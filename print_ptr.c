@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_str.c                                        :+:    :+:            */
+/*   print_ptr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/11/07 11:31:49 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/11 13:49:52 by oznachki      ########   odam.nl         */
+/*   Created: 2025/11/11 10:49:48 by oznachki      #+#    #+#                 */
+/*   Updated: 2025/11/11 14:04:23 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_str(char *str)
+int	print_ptr(void *ptr)
 {
-	int	len;
+	unsigned long long	n;
+	int					count;
+	int					i;
+	const char			*base;
+	char				remain[32];
 
-	if (!str)
+	base = "0123456789abcdef";
+	n = (unsigned long long)ptr;
+	if (ptr == NULL)
+		return (write(1, "(nil)", 5));
+	write(1, "0x", 2);
+	i = 0;
+	while (n > 0)
 	{
-		write (1, "(null)", 6);
-		return (6);
+		remain[i] = base[n % 16];
+		n /= 16;
+		i++;
 	}
-	len = ft_strlen(str);
-	write(1, str, len);
-	return (len);
+	count = i + 2;
+	while (i > 0)
+	{
+		print_char(remain[i - 1]);
+		i--;
+	}
+	return (count);
 }

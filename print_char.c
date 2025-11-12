@@ -6,11 +6,11 @@
 /*   By: oznachki <oznachki@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/11/06 18:33:43 by oznachki      #+#    #+#                 */
-/*   Updated: 2025/11/07 14:36:48 by oznachki      ########   odam.nl         */
+/*   Updated: 2025/11/11 10:57:36 by oznachki      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	print_char(int c)
 {

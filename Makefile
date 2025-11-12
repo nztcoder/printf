@@ -6,7 +6,7 @@
 #    By: oznachki <oznachki@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/11/06 16:08:00 by oznachki      #+#    #+#                  #
-#    Updated: 2025/11/08 19:16:07 by oznachki      ########   odam.nl          #
+#    Updated: 2025/11/11 11:04:31 by oznachki      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC = 	ft_printf.c \
 		handle_format.c \
 		print_char.c \
 		print_str.c \
-		print_integer.c
+		print_int.c \
+		print_hex.c \
+		print_ptr.c
 		
 		
 
@@ -31,6 +33,9 @@ all: $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT)
 	cp $(LIBFT) $(NAME)
